@@ -9,9 +9,11 @@ fun number_in_month(dates : (int*int*int) list, mon : int) =
     if null dates
     then 0
     else
-        let val num_month = number_in_month(tl dates, mon) 
+        let 
+            val num_month = number_in_month(tl dates, mon) 
+            val this_month = #2 (hd dates)
         in
-            if #2 (hd dates) = mon
+            if  this_month = mon
             then 1 + num_month
             else num_month
         end
@@ -22,4 +24,5 @@ fun number_in_months(dates : (int*int*int) list, months : int list) =
     else        
         number_in_month(dates, hd months) + number_in_months(dates, tl months)
 
+(* fun dates_in_month(dates : (int*int*int) list, month : int list) = *)
     
