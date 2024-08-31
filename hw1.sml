@@ -36,8 +36,6 @@ fun is_month_after (day1 : int*int*int, day2 : int*int*int) =
 fun is_day_before (day1 : int*int*int, day2 : int*int*int) = 
     is_before(day1, day2, 3)
 
-fun is_day_after (day1 : int*int*int, day2 : int*int*int) = 
-    is_after(day1, day2, 3)
 
 fun is_older (day1 : int*int*int, day2 : int*int*int) = 
     if is_year_before(day1, day2)
@@ -52,8 +50,23 @@ fun is_older (day1 : int*int*int, day2 : int*int*int) =
                 if is_month_after(day1, day2)
                 then false
                 else 
-                    if is_day_before(day1, day2)
-                    then true
-                    else false
+                    is_day_before(day1, day2)
+                    
+fun number_in_month(dates : (int*int*int) list, mon : int) =
+    if null dates
+    then 0
+    else
+        let val num_month = number_in_month(tl dates, mon) 
+        in
+            if #2 (hd dates) = mon
+            then 1 + num_month
+            else num_month
+        end
+
+fun number_in_months(dates : (int*int*int) list, months : int list) =
+    if null months
+    then 0
+    else        
+        number_in_month(dates, hd months) + number_in_months(dates, tl months)
 
     
