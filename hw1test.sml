@@ -41,10 +41,13 @@ val test_date_to_string_2 = date_to_string (1999, 2, 28) = "February 28, 1999"
 val test_number_before_reaching_sum_1 = number_before_reaching_sum (10, [1,2,3,4,5]) = 3
 val test_number_before_reaching_sum_2 = number_before_reaching_sum (1, [1,2,3,4,5]) = 0
 
+val test_what_month_1 = what_month 70 = 3
+val test_what_month_2 = what_month 5 = 1
+val test_what_month_3 = what_month 360 = 12
+
+val test_month_range_1 = month_range (31, 34) = [1,2,2,2]
+val test_month_range_2 = month_range (31, 29) = []
+
 (* 
-val test9 = what_month 70 = 3
-
-val test10 = month_range (31, 34) = [1,2,2,2]
-
 val test11 = oldest([(2012,2,28),(2011,3,31),(2011,4,28)]) = SOME (2011,3,31)
 *)

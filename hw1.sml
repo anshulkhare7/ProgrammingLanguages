@@ -61,3 +61,19 @@ fun number_before_reaching_sum(sum : int, numbers : int list) =
     in
         recurse(0,0,numbers)
     end
+
+fun what_month(month : int) = 
+    let val days_in_month = [31,28,31,30,31,30,31,31,30,31,30,31]
+    in
+        number_before_reaching_sum(month,days_in_month) + 1
+    end
+
+fun month_range(day1 : int, day2 : int) = 
+    let fun recurse(day:int) = 
+        if day > day2
+        then []    
+        else what_month(day) :: recurse(day+1)
+    in
+        recurse(day1)
+    end
+    
