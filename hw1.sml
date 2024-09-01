@@ -24,5 +24,14 @@ fun number_in_months(dates : (int*int*int) list, months : int list) =
     else        
         number_in_month(dates, hd months) + number_in_months(dates, tl months)
 
-(* fun dates_in_month(dates : (int*int*int) list, month : int list) = *)
+(* Takes a list of dates and a month (i.e., an int) and returns a list holding the dates from the argument list of dates that are in the month. The returned list should contain dates in the order they were originally given. *)
+fun dates_in_month(dates : (int*int*int) list, monthNum : int) =
+        if null dates
+        then []
+        else 
+            if #2 (hd dates) = monthNum
+            then hd dates :: dates_in_month(tl dates, monthNum)
+            else dates_in_month(tl dates, monthNum)
+    
+        
     
