@@ -26,18 +26,30 @@ fun number_in_months(dates : (int*int*int) list, months : int list) =
 
 (* Takes a list of dates and a month (i.e., an int) and returns a list holding the dates from the argument list of dates that are in the month. The returned list should contain dates in the order they were originally given. *)
 fun dates_in_month(dates : (int*int*int) list, monthNum : int) =
-        if null dates
-        then []
-        else 
-            if #2 (hd dates) = monthNum
-            then hd dates :: dates_in_month(tl dates, monthNum)
-            else dates_in_month(tl dates, monthNum)
+    if null dates
+    then []
+    else 
+        if #2 (hd dates) = monthNum
+        then hd dates :: dates_in_month(tl dates, monthNum)
+        else dates_in_month(tl dates, monthNum)
     
 fun dates_in_months(dates : (int*int*int) list, months : int list) =
-        if null dates orelse null months
-        then []
+    if null dates orelse null months
+    then []
+    else 
+        let val dim = dates_in_month(dates, hd months) 
+        in 
+            dim @ dates_in_months(dates, tl months)
+        end
+
+fun get_nth(strings : string list, nth : int) =
+    let fun recurse(ctr:int, mystrings: string list) =         
+        if null mystrings
+        then ""
         else 
-            let val dim = dates_in_month(dates, hd months) 
-            in 
-                dim @ dates_in_months(dates, tl months)
-            end
+            if ctr = nth 
+            then hd mystrings        
+            else recurse(ctr+1, tl mystrings)
+    in        
+        recurse(1, strings)
+    end
