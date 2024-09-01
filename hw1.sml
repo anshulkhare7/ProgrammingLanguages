@@ -36,11 +36,7 @@ fun dates_in_month(dates : (int*int*int) list, monthNum : int) =
 fun dates_in_months(dates : (int*int*int) list, months : int list) =
     if null dates orelse null months
     then []
-    else 
-        let val dim = dates_in_month(dates, hd months) 
-        in 
-            dim @ dates_in_months(dates, tl months)
-        end
+    else dates_in_month(dates, hd months) @ dates_in_months(dates, tl months)        
 
 fun get_nth(strings : string list, nth : int) =
     let fun recurse(ctr:int, mystrings: string list) =         
@@ -55,16 +51,13 @@ fun get_nth(strings : string list, nth : int) =
     end
 
 fun date_to_string(year : int, month : int, day : int) = 
-    let val months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-    in
-        get_nth(months, month) ^ " " ^ Int.toString(day) ^ ", " ^ Int.toString(year)
-    end
+    get_nth(["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"], month) ^ " " ^ Int.toString(day) ^ ", " ^ Int.toString(year)
 
 fun number_before_reaching_sum(sum : int, numbers : int list) =
     let fun recurse(tot : int, counter : int, xs : int list) =        
-        if tot > sum orelse tot = sum
-        then counter - 1
-        else recurse(tot + hd xs, counter + 1, tl xs)
+        if tot < sum 
+        then recurse(tot + hd xs, counter + 1, tl xs)
+        else counter - 1        
     in
         recurse(0,0,numbers)
     end
