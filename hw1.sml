@@ -33,5 +33,11 @@ fun dates_in_month(dates : (int*int*int) list, monthNum : int) =
             then hd dates :: dates_in_month(tl dates, monthNum)
             else dates_in_month(tl dates, monthNum)
     
-        
-    
+fun dates_in_months(dates : (int*int*int) list, months : int list) =
+        if null dates orelse null months
+        then []
+        else 
+            let val dim = dates_in_month(dates, hd months) 
+            in 
+                dim @ dates_in_months(dates, tl months)
+            end
