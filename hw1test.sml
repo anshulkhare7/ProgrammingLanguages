@@ -29,14 +29,19 @@ val test_dates_in_month_2 = dates_in_month ([(2012,2,28),(2013,12,1),(2014,2,17)
 val test_dates_in_months_1 = dates_in_months ([(2012,2,28),(2013,12,1),(2011,3,31),(2011,4,28)],[2,3,4]) = [(2012,2,28),(2011,3,31),(2011,4,28)]
 val test_dates_in_months_2 = dates_in_months ([(2012,2,28),(2013,12,1),(2011,3,31),(2011,4,28)],[]) = []
 
+(* Prob 6 *)
 val test_get_nth_1 = get_nth (["hi", "there", "how", "are", "you"], 2) = "there"
 val test_get_nth_2 = get_nth ([], 2) = ""
 
+(* Prob 7 *)
 val test_date_to_string_1 = date_to_string (2013, 6, 1) = "June 1, 2013"
+val test_date_to_string_2 = date_to_string (1999, 2, 28) = "February 28, 1999"
+
+(* Prob 8 *)
+val test_number_before_reaching_sum_1 = number_before_reaching_sum (10, [1,2,3,4,5]) = 3
+val test_number_before_reaching_sum_2 = number_before_reaching_sum (1, [1,2,3,4,5]) = 0
 
 (* 
-val test8 = number_before_reaching_sum (10, [1,2,3,4,5]) = 3
-
 val test9 = what_month 70 = 3
 
 val test10 = month_range (31, 34) = [1,2,2,2]

@@ -59,3 +59,12 @@ fun date_to_string(year : int, month : int, day : int) =
     in
         get_nth(months, month) ^ " " ^ Int.toString(day) ^ ", " ^ Int.toString(year)
     end
+
+fun number_before_reaching_sum(sum : int, numbers : int list) =
+    let fun recurse(tot : int, counter : int, xs : int list) =        
+        if tot > sum orelse tot = sum
+        then counter - 1
+        else recurse(tot + hd xs, counter + 1, tl xs)
+    in
+        recurse(0,0,numbers)
+    end
