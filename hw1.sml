@@ -53,3 +53,9 @@ fun get_nth(strings : string list, nth : int) =
     in        
         recurse(1, strings)
     end
+
+fun date_to_string(year : int, month : int, day : int) = 
+    let val months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    in
+        get_nth(months, month) ^ " " ^ Int.toString(day) ^ ", " ^ Int.toString(year)
+    end
